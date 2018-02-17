@@ -2,14 +2,24 @@
   padding: 10px;
   box-shadow: 0 2px 2px lightgray;
   margin: 10px;
+  background: #fff;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.study-title {
+  display: flex;
+  justify-content: space-between;
 }
 
 .study-date {
-  float: right;
   font-weight: 100;
   color: lightgray;
   font-style: italic;
   font-size: .6em;
+  margin-right: 10px;
 }
 
 .expander {
@@ -21,23 +31,24 @@
   padding: 5px 10px;
 }
 
-.expander .expand-button {
+.expand-button {
   background: lightseagreen;
   color: white;
   border-radius: 0 10px 0 10px;
   vertical-align: middle;
   font-weight: bold;
+  padding: 5px 10px;
+}
+
+.expand-button:hover {
+  background: seagreen;
+  cursor: pointer;
 }
 
 .peer-review-indicator {
   color: darkred;
   font-weight: 100;
   font-style: italic;
-}
-
-.expander .expand-button:hover {
-  background: seagreen;
-  cursor: pointer;
 }
 
 .details {
@@ -54,6 +65,11 @@ span.section-name {
   font-weight: 500;
   padding-left: 10px;
   border-left: 3px solid lightseagreen;
+  border-bottom: 1px solid lightseagreen;
+}
+
+.panel {
+  font-weight: 100;
 }
 
 .panel.study-title {

@@ -34,12 +34,14 @@ class ListItem extends Component {
     return(
       <div className="list-item">
         <div className="panel study-title">
-          {helpers.toTitleCase(this.props.data.title)}
-          <span className="study-date">{date}</span>
-        </div>
-        <div className="expander">
-          <span className="peer-review-indicator"> {this.props.data.isPeerReview ? '(Peer Review)' : ''}</span>
-          <span className="expand-button" onClick={this.handleExpandoToggle}>{this.state.expanded ? '-' : '+'}</span>
+          <div className="title-name">
+            <span className="title">{helpers.toTitleCase(this.props.data.title)}</span>
+            <span className="peer-review-indicator"> {this.props.data.isPeerReview ? '(Peer Review)' : ''}</span>
+          </div>
+          <div className="inline-block">
+            <span className="study-date">{date}</span>
+            <span className="expand-button" onClick={this.handleExpandoToggle}>{this.state.expanded ? '-' : '+'}</span>
+          </div>
         </div>
         <div className={"details" + (this.state.expanded ? ' expanded' : '')}>
           <div className="panel study-author">

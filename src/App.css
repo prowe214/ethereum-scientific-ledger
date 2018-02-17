@@ -1,17 +1,36 @@
 * {
   box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont,"Segoe UI","Roboto","Helvetica Neue", Arial, sans-serif,"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  /* font-family: -apple-system, BlinkMacSystemFont,"Segoe UI","Roboto","Helvetica Neue", Arial, sans-serif,"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; */
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.logo {
+  height: 75px;
+  width: auto;
+}
+
+.nav {
+  display: inline-block;
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 100;
+  background: none;
+  margin-left: 50px;
+}
+
+.nav a:hover {
+  color: rgba(255,255,255,.9)
 }
 
 .App-header {
   background-color: #222;
-  padding: 20px;
+  padding: 20px 150px;
   color: white;
+  display: flex;
+  align-items: center;
 }
 
 .App-title {
@@ -24,4 +43,9 @@
 
 .container {
   padding: 50px;
+}
+
+.content {
+  padding: 20px 150px;
+  background: rgba(245,245,245,1);
 }
