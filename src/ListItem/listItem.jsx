@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './listItem.css';
 import * as helpers from '../Helpers/helpers';
+import Moment from "moment";
 
 class ListItem extends Component {
   state = {
@@ -24,23 +25,26 @@ class ListItem extends Component {
 
   handleExpandoToggle = () => {
     // this.state.expanded = !this.state.expanded;
-    const current = this.state.expanded;
-    this.setState({expanded: !current});
+    this.setState({expanded: !this.state.expanded});
   }
 
   render() {
+    const date = Moment(this.props.data.publishDate).format('MMMM Do, YYYY').toString();
+
     return(
       <div className="list-item">
-        <div className="panel study-title">{helpers.toTitleCase(this.props.data.title)}</div>
-        <div className="expander" onClick={this.handleExpandoToggle}><span>{this.state.expanded ? '-' : '+'}</span></div>
+        <div className="panel study-title">
+          {helpers.toTitleCase(this.props.data.title)}
+          <span className="study-date">{date}</span>
+        </div>
+        <div className="expander">
+          <span className="peer-review-indicator"> {this.props.data.isPeerReview ? '(Peer Review)' : ''}</span>
+          <span className="expand-button" onClick={this.handleExpandoToggle}>{this.state.expanded ? '-' : '+'}</span>
+        </div>
         <div className={"details" + (this.state.expanded ? ' expanded' : '')}>
           <div className="panel study-author">
             <span className="section-name">Author</span>
             {this.props.data.author}
-          </div>
-          <div className="panel study-date">
-            <span className="section-name">Published</span>
-            {this.props.data.publishDate}
           </div>
           <div className="panel study-abstract">
             <span className="section-name">Abstract</span>

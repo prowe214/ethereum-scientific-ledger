@@ -3,8 +3,11 @@ import './App.css';
 import ListItem from "./ListItem/listItem";
 
 class App extends Component {
+  state = {
+    route: 'all'
+  }
 
-  testobject = {
+  sampleobject = {
     title: "test title",
     abstract: "lots of words for an abstract",
     introduction: "here is an intro",
@@ -23,24 +26,52 @@ class App extends Component {
   studies = () => {
     let result = [];
     for (let i = 0; i < 10; i++) {
-      this.testobject.id = i;
-      result.push(this.testobject);
+      let newObj = Object.assign({}, this.sampleobject);
+      newObj.id = i;
+
+      if (i % 3 === 0) {
+        newObj.isPeerReview = true;
+        newObj.reviewedStudyId = 4;
+      }
+
+      result.push(newObj);
     }
     return result;
   }
 
   render() {
-    console.log(this.testobject);
+    let view = null;
+    const setView = (route) => {
+      if (route) {
+        this.setState({route: route});
+      } else {
+        this.setState({route: 'all'});
+      }
+
+      if (this.state.route === 'all') {
+        view = ( 
+          this.studies().map(study => 
+            <ListItem data={study} expanded={false} key={study.id}></ListItem>
+          )
+        )
+      } else if (this.state.route === 'post new') {
+        view = (<div>Hi!</div>)
+      }
+    }
+    const routeNew = () => {
+      setView('post new');
+    }
 
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">The Journal</h1>
+          <h1 className="App-title">SLEDGER</h1>
+          <div className="nav">
+            <a onClick={routeNew}>Post New Study</a>
+          </div>
         </header>
         <div className="container">
-          {this.studies().map(article => 
-            <ListItem data={article} expanded={false} key={article.id}></ListItem>
-          )}
+          {view}
         </div>
       </div>
     );

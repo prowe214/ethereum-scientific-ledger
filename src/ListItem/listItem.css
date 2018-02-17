@@ -1,26 +1,43 @@
 .list-item {
   padding: 10px;
-  border: 1px solid lightgray;
   box-shadow: 0 2px 2px lightgray;
   margin: 10px;
 }
 
+.study-date {
+  float: right;
+  font-weight: 100;
+  color: lightgray;
+  font-style: italic;
+  font-size: .6em;
+}
+
 .expander {
-  cursor: pointer;
-  text-align: right;
+  display: flex;
+  justify-content: space-between;
 }
 
 .expander span {
+  padding: 5px 10px;
+}
+
+.expander .expand-button {
   background: lightseagreen;
   color: white;
-  padding: 5px 10px;
   border-radius: 0 10px 0 10px;
   vertical-align: middle;
   font-weight: bold;
 }
 
-.expander span:hover {
+.peer-review-indicator {
+  color: darkred;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.expander .expand-button:hover {
   background: seagreen;
+  cursor: pointer;
 }
 
 .details {
