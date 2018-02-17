@@ -1,0 +1,45 @@
+.list-item {
+  padding: 10px;
+  border: 1px solid lightgray;
+  box-shadow: 0 2px 2px lightgray;
+  margin: 10px;
+}
+
+.expander {
+  cursor: pointer;
+  text-align: right;
+}
+
+.expander span {
+  background: lightseagreen;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 0 10px 0 10px;
+  vertical-align: middle;
+  font-weight: bold;
+}
+
+.expander span:hover {
+  background: seagreen;
+}
+
+.details {
+  display: none;
+}
+
+.details.expanded {
+  display: block;
+}
+
+span.section-name {
+  display: block;
+  margin: 20px 0 5px 0;
+  font-weight: 500;
+  padding-left: 10px;
+  border-left: 3px solid lightseagreen;
+}
+
+.panel.study-title {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
