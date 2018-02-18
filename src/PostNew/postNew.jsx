@@ -42,6 +42,7 @@ class PostNew extends Component {
   }
 
   render(){
+<<<<<<< HEAD
     // const fields = Object.keys(this.state.form);
     // const form = () => {
       // let webform = [];
@@ -54,6 +55,16 @@ class PostNew extends Component {
       // }
       // return webform;
     // }
+=======
+    const fields = Object.keys(this.state.form);
+    const form = () => {
+      {for (let i=0; i<fields.length; i++) {
+        <label htmlFor={fields}>
+          <input name="title" value={this.state.form.title} type="text" onBlur={this.handleChange} id="title"/>
+        </label>
+      }}
+    }
+>>>>>>> 2539754f5e9ae688b2dba26fff13b4a6245c0195
 
     return(
       <div className="new-study">
