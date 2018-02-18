@@ -30,16 +30,20 @@ class ListItem extends Component {
 
   render() {
     const date = Moment(this.props.data.publishDate).format('MMMM Do, YYYY').toString();
+    const expand = <i class="fal fa-plus"></i>
+    const collapse = <i class="fal fa-times"></i>
+
 
     return(
       <div className="list-item">
+        {expand} {collapse}
         <div className="panel study-title">
           <div className="title-name">
+            <span className="peer-review-indicator"> {this.props.data.isPeerReview ? 'Peer Review of: ' : ''}</span>
             <span className="title">{helpers.toTitleCase(this.props.data.title)}</span>
-            <span className="peer-review-indicator"> {this.props.data.isPeerReview ? '(Peer Review)' : ''}</span>
           </div>
           <div className="inline-block">
-            <span className="study-date">{date}</span>
+            <span className="study-date">Published on {date}</span>
             <span className="expand-button" onClick={this.handleExpandoToggle}>{this.state.expanded ? '-' : '+'}</span>
           </div>
         </div>
