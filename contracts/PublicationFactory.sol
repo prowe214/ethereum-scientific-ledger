@@ -1,8 +1,6 @@
 pragma solidity ^0.4.19;
 
-import "../node_modules/zeppelin-solidity/contracts/ownership/Ownable.sol";
-
-contract PublicationFactory is Ownable {
+contract PublicationFactory {
   //storage and variables
   Publication[] public publications;
 
@@ -57,7 +55,7 @@ contract PublicationFactory is Ownable {
   }
 
   function getPublicationPeerReviewed() public returns (bool) {
-      Publication firstPub = publications[0];
+      Publication storage firstPub = publications[0];
       return firstPub.isPeerReview;
   }
 
