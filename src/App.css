@@ -47,5 +47,6 @@
 
 .content {
   padding: 20px 150px;
+  padding-bottom: 150px;
   background: rgba(245,245,245,1);
 }
