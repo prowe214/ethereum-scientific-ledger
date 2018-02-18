@@ -54,7 +54,7 @@ contract PublicationFactory {
     _createPublication(_title, _author, false, uint32(now));
   }
 
-  function getPublicationPeerReviewed() public returns (bool) {
+  function getPublicationPeerReviewed() public view returns (bool) {
     // THERE IS NO PUBLICATION YET
       Publication storage firstPub = publications[0];
       return firstPub.isPeerReview;
