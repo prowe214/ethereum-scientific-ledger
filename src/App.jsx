@@ -6,7 +6,7 @@ import List from './List/list';
 import PostNew from "./PostNew/postNew";
 import ReviewStudy from "./ReviewStudy/reviewStudy";
 import getWeb3 from './utils/getWeb3';
-import PublicationFactory from '../build/contracts/PublicationFactory.json';
+import PublicationFactory from './build/contracts/PublicationFactory.json';
 
 class App extends Component {
     constructor(props) {
@@ -14,7 +14,8 @@ class App extends Component {
         this.state = {
               storageValue: 0,
               web3: null,
-              route: 'all'
+              route: 'all',
+              publicationFactory: null
             }
     }
     componentWillMount() {
@@ -36,42 +37,46 @@ class App extends Component {
     }
 
     instantiateContract() {
-      /*
-       * SMART CONTRACT EXAMPLE
-       *
-       * Normally these functions would be called in the context of a
-       * state management library, but for convenience I've placed them here.
-       */
-
       const contract = require('truffle-contract')
       const publicationFactory = contract(PublicationFactory)
+      this.state.publicationFactory = publicationFactory
+
       publicationFactory.setProvider(this.state.web3.currentProvider)
 
-      // Declaring this for later so we can chain functions on SimpleStorage.
       var publicationFactoryInstance
 
-      // Get accounts.
       this.state.web3.eth.getAccounts((error, accounts) => {
         if (error) {
             console.log('Error Occurred', error)
         }
 
         publicationFactory.deployed().then((instance) => {
-          console.log('Instance', instance)
           publicationFactoryInstance = instance
-
+          console.log("HERE>>>>>>>>>>>>>>>>>", instance)
           // Stores a given value, 5 by default.
           return publicationFactoryInstance.set(5, {from: accounts[0]})
         }).then((result) => {
-            console.log('Result1', result)
           // Get the value from the contract to prove it worked.
           return publicationFactoryInstance.getPublicationPeerReviewed.call(accounts[0])
         }).then((result) => {
           // Update state with the result.
-          console.log('Result2', result)
+          console.log("Result from getPublicationPeerReviewed:", result)
           return this.setState({ storageValue: result.c[0] })
-        })
+      }).catch(oops => console.log(oops))
     })
+         this.bindEvents()
+    }
+
+    bindEvents() {
+        //click listener to set off creation
+        this.createPublication()
+    }
+
+    createPublication() {
+        var publicationInstance
+        this.state.publicationFactory.deployed().then(
+            console.log("do nothing")
+        )
     }
 
   render() {
@@ -106,7 +111,6 @@ class App extends Component {
         </header>
         <div className="content">
           <Route exact path="/" component={List}/>
-          <Route path="/new" component={PostNew}/>
           <Route path="/review" component={ReviewStudy}/>
         </div>
       </div>
