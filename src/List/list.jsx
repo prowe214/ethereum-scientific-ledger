@@ -10,7 +10,8 @@ class List extends Component {
     this.state = {
       results: [],
       filters: {
-        showOnlyReviewed: false
+        showOnlyReviewed: false,
+        showOnlyUnreviewed: false
       }
     }
   }
@@ -32,38 +33,59 @@ class List extends Component {
   }
 
   componentDidMount() {
+    let state = this.state;
     this.originalDataStore = this.getAllStudies();
     this.buildReviewedProp();
-    this.setState({results: this.originalDataStore})
+    if (this.props.location.pathname === '/review') {
+      state.filters.showOnlyUnreviewed = true;
+    }
+    state.results = this.originalDataStore;
+    this.handleFilters();
+    this.setState(state)
   }
 
   getAllStudies = () => {
-    let result = [];
+    return this.props.allData;
+    // let result = [];
 
-    for (let i = 0; i < 10; i++) {
-      let newObj = Object.assign({}, this.sampleobject);
-      newObj.id = i;
+    // for (let i = 0; i < 10; i++) {
+    //   let newObj = Object.assign({}, this.sampleobject);
+    //   newObj.id = i;
 
-      if (i % 3 === 0) {
-        newObj.isPeerReview = true;
-        newObj.reviewedStudyId = 4;
-      }
+    //   const rand = Math.floor(Math.random() * 100);
 
-      result.push(newObj);
-    }
-    return result;
+    //   if (rand % 2 === 0) {
+    //     newObj.isPeerReview = true;
+    //     newObj.reviewedStudyId = Math.floor(Math.random() * 10);
+    //   }
+
+    //   result.push(newObj);
+    // }
+    // return result;
   }
 
-  getReviewedIds = () => {
+  getReviewIds = () => {
     // gets ids of all studies that have a review pointed at them
     return this.originalDataStore.map(obj => {
         return obj.isPeerReview ? obj.reviewedStudyId : null;
     })
   }
 
-  getReviewedStudies = () => {
+  getReviewedStudies = (getUnreviewed) => {
     // builds array of studies that have reviews pointing at them
-    const reviewedIds = this.getReviewedIds();
+    const reviewedIds = this.getReviewIds();
+    let unreviewedStudies = [];
+
+    for (let i = 0; i < this.originalDataStore.length; i++) {
+      if (reviewedIds.indexOf(i) === -1 
+            && !this.originalDataStore[i].isPeerReview) {
+        unreviewedStudies.push(this.originalDataStore[i]);
+      }
+    }
+    console.log(unreviewedStudies)
+    if (getUnreviewed) {
+      return unreviewedStudies;
+    }
 
     return this.originalDataStore.filter(obj => {
       return reviewedIds.indexOf(obj.id) > -1 ? obj : null;
@@ -72,7 +94,7 @@ class List extends Component {
 
   buildReviewedProp = () => {
     // sets `reviewed` property on studies that have review pointing at them
-    const reviewedIds = this.getReviewedIds();
+    const reviewedIds = this.getReviewIds();
 
     for (let i=0; i<this.originalDataStore.length; i++) {
       const match = reviewedIds.indexOf(this.originalDataStore[i].id) > -1;
@@ -85,26 +107,49 @@ class List extends Component {
   handleFilters = (e) => {
     let state = this.state;
 
-    state.filters.showOnlyReviewed = !state.filters.showOnlyReviewed;
+    if (e && e.target.id === 'showOnlyReviewed') {
+      state.filters.showOnlyReviewed = !state.filters.showOnlyReviewed;
+    }
 
-      if (state.filters.showOnlyReviewed) {
+    if (state.filters.showOnlyUnreviewed) {
+      // inverts getReviewedStudies function
+      state.results = this.getReviewedStudies(true);
+      console.log(state.results)
+    } else if (state.filters.showOnlyReviewed) {
 
-        state.results = this.getReviewedStudies();
+      state.results = this.getReviewedStudies();
 
-      } else {state.results = this.originalDataStore}
+    } else {state.results = this.originalDataStore}
 
     this.setState(state);
   }
 
   render() {
+    let filterButton = null;
+    let routeText = null;
+    if (!this.state.filters.showOnlyUnreviewed) {
+      filterButton = (
+          <div className={'filter btn' + (this.state.filters.showOnlyReviewed ? ' filter-on' : '')} id="showOnlyReviewed" onClick={this.handleFilters}>
+            Show only Peer Reviewed Studies
+          </div>
+      )
+    }
+    if (this.state.filters.showOnlyUnreviewed) {
+      routeText = "Displaying studies that require peer review"
+    } else if (this.state.filters.showOnlyReviewed) {
+      routeText = "Displaying studies that have been peer reviewed"
+    } else {
+      routeText = "Displaying all studies"
+    }
+
+
+
     return (
       <div className="list-container">
         <div className="filters-container">
-          <div className={'filter' + (this.state.filters.showOnlyReviewed ? ' filter-on' : '')} onClick={this.handleFilters}>
-            {this.state.filters.showOnlyReviewed ? '(ON) ' : null}
-            Show only Peer Reviewed Studies
-          </div>
+        {filterButton}
         </div>
+        <div>{routeText}</div>
         <div className="list">
           {this.state.results.map(study => 
             <ListItem data={study} expanded={false} key={study.id}></ListItem>

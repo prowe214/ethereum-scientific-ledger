@@ -1,4 +1,4 @@
-.list-item {
+.panel {
   padding: 10px;
   box-shadow: 0 2px 2px lightgray;
   margin: 10px;
@@ -7,6 +7,14 @@
 
 .inline-block {
   display: inline-block;
+}
+
+.title-name {
+  white-space: nowrap;
+  word-wrap: break-word;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  max-width: 60%;
 }
 
 .study-title {
@@ -18,7 +26,7 @@
   font-weight: 100;
   color: lightgray;
   font-style: italic;
-  font-size: .6em;
+  font-size: .7em;
   margin-right: 10px;
   line-height: .6em;
 }
@@ -27,7 +35,7 @@
   color: darkred;
   font-weight: 100;
   font-style: italic;
-  font-size: 0.6em;
+  font-size: 0.7em;
   margin-right: 10px;
 }
 
@@ -77,9 +85,9 @@
   display: block;
 }
 
-span.section-name {
+.section-name {
   display: block;
-  margin: 20px 0 5px 0;
+  margin: 40px 0 5px 0;
   font-weight: 500;
   padding-left: 10px;
   border-left: 3px solid lightseagreen;
