@@ -55,6 +55,7 @@ contract PublicationFactory {
   }
 
   function getPublicationPeerReviewed() public returns (bool) {
+    // THERE IS NO PUBLICATION YET
       Publication storage firstPub = publications[0];
       return firstPub.isPeerReview;
   }

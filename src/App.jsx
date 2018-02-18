@@ -12,11 +12,11 @@ class App extends Component {
     constructor(props) {
         super(props)
         this.state = {
-              storageValue: 0,
-              web3: null,
-              route: 'all',
-              publicationFactory: null
-            }
+          storageValue: 0,
+          web3: null,
+          route: 'all',
+          publicationFactory: null
+        }
     }
     componentWillMount() {
       // Get network provider and web3 instance.
@@ -54,7 +54,7 @@ class App extends Component {
           publicationFactoryInstance = instance
           console.log("HERE>>>>>>>>>>>>>>>>>", instance)
           // Stores a given value, 5 by default.
-          return publicationFactoryInstance.set(5, {from: accounts[0]})
+          // return publicationFactoryInstance.set(5, {from: accounts[0]})
         }).then((result) => {
           // Get the value from the contract to prove it worked.
           return publicationFactoryInstance.getPublicationPeerReviewed.call(accounts[0])
@@ -75,7 +75,7 @@ class App extends Component {
     createPublication() {
         var publicationInstance
         this.state.publicationFactory.deployed().then(
-            console.log("do nothing")
+            // console.log("do nothing")
         )
     }
 
