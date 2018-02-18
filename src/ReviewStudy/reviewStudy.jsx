@@ -72,7 +72,7 @@ class ReviewStudy extends Component {
                 <label className="inline-block" htmlFor="validatesStudy">Yes, the conclusions of this study are valid</label>
               </div>
             </div>
-          <div className="btn submit">Submit</div>
+          <div className="btn submit" onClick={this.handleSubmit}>Submit</div>
         </div>
       </div>
     )
