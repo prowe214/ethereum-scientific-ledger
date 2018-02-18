@@ -4,8 +4,11 @@ import './postNew.css';
 
 class PostNew extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+
+
+
     this.state = {
       form: {
         title: 'hello',
@@ -22,6 +25,8 @@ class PostNew extends Component {
         reviewedStudyId: false
       }
     }
+
+    console.log('Props', props);
   }
 
   handleChange = (e) => {
