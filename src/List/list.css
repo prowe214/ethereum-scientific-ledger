@@ -2,7 +2,12 @@
   text-align: right;
 }
 
-.filter {
+.submit-review-button-container {
+  text-align: right;
+  margin-top: 15px;
+}
+
+.btn {
   display: inline-block;
   background: lightseagreen;
   color: white;
@@ -11,11 +16,34 @@
   cursor: pointer;
 }
 
-.filter:hover {
+.btn.filter {
+  background: gray;
+}
+
+.btn.invert {
+  color: lightseagreen;
+  background: none;
+  border: 1px solid lightseagreen;
+}
+
+.btn.invert:hover {
+  background: rgba(250,250,250,1);
+  border-bottom: 3px solid lightseagreen;
+  border-right: 3px solid lightseagreen;
+}
+
+.btn:hover {
   background: seagreen;
+}
+
+.btn.filter:hover {
+  background: darkgray;
 }
 
 .filter.filter-on {
   background: lightseagreen;
+}
 
+.btn.filter-on:hover {
+  background: seagreen;
 }

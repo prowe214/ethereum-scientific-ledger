@@ -4,6 +4,14 @@
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
 }
 
+html, body {
+  height: 100vh;
+}
+
+#root, .content, .page-container {
+  height: 100%;
+}
+
 .logo {
   height: 75px;
   width: auto;

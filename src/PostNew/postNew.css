@@ -26,6 +26,10 @@ input:focus, textarea:focus {
   outline: none;
 }
 
+.radio-input {
+  padding-left: 20px;
+}
+
 .radio-input label {
   width: auto;
   display: inline-block;
