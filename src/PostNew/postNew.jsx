@@ -36,11 +36,11 @@ class PostNew extends Component {
   render(){
     const fields = Object.keys(this.state.form);
     const form = () => {
-      {for (i=0; i<fields.length; i++) {
-        <label htmlFor={field.}>
+      {for (let i=0; i<fields.length; i++) {
+        <label htmlFor={fields}>
           <input name="title" value={this.state.form.title} type="text" onBlur={this.handleChange} id="title"/>
         </label>
-      })}
+      }}
     }
 
     return(
