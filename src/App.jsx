@@ -6,6 +6,7 @@ import List from './List/list';
 import PostNew from "./PostNew/postNew";
 import ReviewStudy from "./ReviewStudy/reviewStudy";
 import ViewStudy from "./ViewStudy/viewStudy";
+import mockStudies from './Helpers/data.json';
 
 class App extends Component {
   constructor() {
@@ -29,22 +30,20 @@ class App extends Component {
     isPeerReview: false,
     author: "Jerry von Scientism"
   }
+  studiesData = mockStudies;
 
   getAllStudies = () => {
     let result = [];
 
-    for (let i = 0; i < 10; i++) {
-      let newObj = Object.assign({}, this.sampleobject);
-      newObj.id = i;
-
+    for (let i = 0; i < this.studiesData.length; i++) {
       const rand = Math.floor(Math.random() * 100);
 
       if (rand % 2 === 0) {
-        newObj.isPeerReview = true;
-        newObj.reviewedStudyId = Math.floor(Math.random() * 10);
+        this.studiesData[i].isPeerReview = true;
+        this.studiesData[i].reviewedStudyId = Math.floor(Math.random() * 10);
       }
 
-      result.push(newObj);
+      result.push(this.studiesData[i]);
     }
     return result;
   }

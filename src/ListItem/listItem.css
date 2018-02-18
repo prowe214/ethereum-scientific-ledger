@@ -9,6 +9,14 @@
   display: inline-block;
 }
 
+.title-name {
+  white-space: nowrap;
+  word-wrap: break-word;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  max-width: 60%;
+}
+
 .study-title {
   display: flex;
   justify-content: space-between;
@@ -79,7 +87,7 @@
 
 .section-name {
   display: block;
-  margin: 20px 0 5px 0;
+  margin: 40px 0 5px 0;
   font-weight: 500;
   padding-left: 10px;
   border-left: 3px solid lightseagreen;

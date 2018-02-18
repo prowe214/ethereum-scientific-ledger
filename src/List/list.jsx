@@ -111,8 +111,6 @@ class List extends Component {
       state.filters.showOnlyReviewed = !state.filters.showOnlyReviewed;
     }
 
-    console.log(state.filters)
-
     if (state.filters.showOnlyUnreviewed) {
       // inverts getReviewedStudies function
       state.results = this.getReviewedStudies(true);

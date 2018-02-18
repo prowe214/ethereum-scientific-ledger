@@ -25,6 +25,20 @@ class ReviewStudy extends Component {
     this.setState(state);
   }
 
+  handleChange = (e) => {
+    const state = this.state;
+    if (e.target.type === 'radio') {
+      state.form[e.target.name] = e.target.checked;
+    } else {
+      state.form[e.target.name] = e.target.value;
+    }
+    this.setState(state);
+  }
+
+  handleSubmit = () => {
+    console.log('SUBMITTED!', this.state.form);
+  }
+
   render(){
     const date = Moment(this.props.data.publishDate).format('MMMM Do, YYYY').toString();
 
@@ -50,11 +64,11 @@ class ReviewStudy extends Component {
             </label>
             <div className="label">Given your criticisms, do you believe that this study is validated?</div>
               <div className="radio-input">
-                <input className="inline-block" name="validatesStudy" checked={this.state.form.validatesStudy === false} type="radio" onChange={this.handleChange} id="isPeerReviewFalse"/>
+                <input className="inline-block" name="validatesStudy" type="radio" onChange={this.handleChange} id="isPeerReviewFalse"/>
                 <label className="inline-block" htmlFor="validatesStudy">No, this study is not sufficient to consider its conclusions valid</label>
               </div>
               <div className="radio-input">
-                <input className="inline-block" name="validatesStudy" checked={this.state.form.validatesStudy === true} type="radio" onChange={this.handleChange} id="isPeerReviewTrue"/>
+                <input className="inline-block" name="validatesStudy" type="radio" onChange={this.handleChange} id="isPeerReviewTrue"/>
                 <label className="inline-block" htmlFor="validatesStudy">Yes, the conclusions of this study are valid</label>
               </div>
             </div>
