@@ -20,6 +20,20 @@
   font-style: italic;
   font-size: .6em;
   margin-right: 10px;
+  line-height: .6em;
+}
+
+.requires-review {
+  color: darkred;
+  font-weight: 100;
+  font-style: italic;
+  font-size: 0.6em;
+  margin-right: 10px;
+}
+
+.stacked span {
+  display: block;
+  text-align: right;
 }
 
 .expander {
@@ -46,9 +60,13 @@
 }
 
 .peer-review-indicator {
-  color: darkred;
+  color: lightseagreen;
   font-weight: 100;
   font-style: italic;
+}
+
+.stacked {
+  text-align: right;
 }
 
 .details {

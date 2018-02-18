@@ -11,8 +11,6 @@ class App extends Component {
     route: 'all'
   }
 
-
-
   render() {
     // let view = null;
     // const setView = (route) => {

@@ -1,0 +1,21 @@
+.filters-container {
+  text-align: right;
+}
+
+.filter {
+  display: inline-block;
+  background: lightseagreen;
+  color: white;
+  border-radius: 5px;
+  padding: 5px 15px;
+  cursor: pointer;
+}
+
+.filter:hover {
+  background: seagreen;
+}
+
+.filter.filter-on {
+  background: lightseagreen;
+
+}

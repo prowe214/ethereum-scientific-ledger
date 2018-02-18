@@ -26,8 +26,6 @@ class PostNew extends Component {
 
   handleChange = (e) => {
     const state = this.state;
-    console.log(e.target.checked);
-    console.log(state.form[e.target.name]);
     if (e.target.type === 'radio') {
       state.form[e.target.name] = e.target.checked;
     } else {
@@ -48,7 +46,6 @@ class PostNew extends Component {
         <h2>Submit a New Study</h2>
         <p>This study will be open to Peer Review.  Once reviewed and approved, it will be posted permanently to Sledger.</p>
         <div className="form">
-          {/* {form} */}
           <label htmlFor="title">Title
             <input name="title" value={this.state.form.title} type="text" onChange={this.handleChange} id="title"/>
           </label>
