@@ -78,11 +78,11 @@ class PostNew extends Component {
           </label>
           <div className="label">Is this a Peer Review?</div>
             <div className="radio-input">
-              <input className="inline-block" name="isPeerReview" checked={this.state.form.isPeerReview === false} type="radio" onChange={this.handleChange} id="isPeerReviewFalse"/>
+              <input className="inline-block" name="isPeerReview" type="radio" onChange={this.handleChange} id="isPeerReviewFalse"/>
               <label className="inline-block" htmlFor="isPeerReview">No, this is a new study</label>
             </div>
             <div className="radio-input">
-              <input className="inline-block" name="isPeerReview" checked={this.state.form.isPeerReview === true} type="radio" onChange={this.handleChange} id="isPeerReviewTrue"/>
+              <input className="inline-block" name="isPeerReview" type="radio" onChange={this.handleChange} id="isPeerReviewTrue"/>
               <label className="inline-block" htmlFor="isPeerReview">Yes, this is a peer review of an existing study</label>
             </div>
           <label htmlFor="reviewedStudyId" className={this.state.form.isPeerReview ? '' : 'hidden'}>What is the ID of the study are you reviewing?
