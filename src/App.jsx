@@ -67,6 +67,18 @@ class App extends Component {
          this.bindEvents()
     }
 
+    // bindEvents() {
+    //     //click listener to set off creation
+    //     this.createPublication()
+    // }
+
+    // createPublication() {
+    //     var publicationInstance
+    //     this.state.publicationFactory.deployed().then(
+    //         console.log("do nothing")
+    //     )
+    // }
+
     bindEvents() {
         //click listener to set off creation
         this.createPublication()
