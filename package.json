@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "gh-pages": "^1.1.0",
     "moment": "^2.20.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
@@ -13,6 +14,8 @@
     "zeppelin-solidity": "1.6.0"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -b master -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
@@ -34,5 +37,5 @@
   "bugs": {
     "url": "https://github.com/prowe214/ethereum-scientific-ledger/issues"
   },
-  "homepage": "https://github.com/prowe214/ethereum-scientific-ledger#readme"
+  "homepage": "https://prowe214.github.com/ethereum-scientific-ledger"
 }
